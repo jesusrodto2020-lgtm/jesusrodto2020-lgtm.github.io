@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <body>
-  <button onclick="send()">ENVIAR MENSAJE</button>
+  <button id="btn">ENVIAR MENSAJE</button>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -21,11 +21,16 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    function send() {
+    document.getElementById("btn").addEventListener("click", () => {
+      console.log("Botón presionado, enviando...");
       set(ref(db, "mensaje"), {
         texto: "¡El botón fue presionado!"
-      });
-    }
+      })
+      .then(() => console.log("Mensaje enviado"))
+      .catch(err => console.error("Error:", err));
+    });
   </script>
 </body>
 </html>
+
+
