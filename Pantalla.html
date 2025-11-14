@@ -7,7 +7,25 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body style="font-family: sans-serif; padding: 20px;">
+
+<!-- Imagen de error superpuesta -->
+<div id="errorOverlay" 
+     style="display:none;
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background: rgba(0,0,0,0.5);
+            z-index:9999;
+            display:flex;
+            justify-content:center;
+            align-items:center;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Red_X.svg/768px-Red_X.svg.png" 
+       alt="error" 
+       style="width:180px; filter:drop-shadow(0 0 10px black);">
+</div>
+  
   <h2>Texto recibido:</h2>
+  
 
   <div id="resultado" style="font-size: 22px; padding: 10px; background: #eee;">
     Esperando mensaje...
@@ -67,10 +85,23 @@
       document.body.style.background = ""; // Regresa al color original
     }, 5000);
   }
+
+
+
+      // Mostrar tacha de error 2 segundos
+if (msg && msg.toLowerCase() === "error") {
+  const overlay = document.getElementById("errorOverlay");
+  overlay.style.display = "flex";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 2000);
+}
 });
   </script>
 </body>
 </html>
+
 
 
 
