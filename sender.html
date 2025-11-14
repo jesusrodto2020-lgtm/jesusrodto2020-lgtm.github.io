@@ -49,7 +49,7 @@
 
 <body>
   <div class="center">
-    <button id="sendBtn" class="big-btn">Enviar “azul”</button>
+    <button id="sendBtn" class="big-btn">Team Red</button>
   </div>
 
   <script>
@@ -68,13 +68,14 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Cuando se toca el botón → envía "azul"
+    // Cuando se toca el botón → envía "rojo"
     document.getElementById("sendBtn").addEventListener("click", () => {
-      db.ref("chat/mensaje").set("azul");
+      db.ref("chat/mensaje").set("rojo");
     });
   </script>
 </body>
 </html>
+
 
 
 
