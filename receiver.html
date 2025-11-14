@@ -31,10 +31,24 @@
 
     // Escucha en TIEMPO REAL
     db.ref("chat/mensaje").on("value", (snapshot) => {
-      document.getElementById("resultado").innerText = snapshot.val();
-    });
+  const msg = snapshot.val();
+  const box = document.getElementById("resultado");
+
+  // Mostrar el texto normalmente
+  box.innerText = msg;
+
+  // Si el mensaje es "azul", cambiar fondo 5 segundos
+  if (msg && msg.toLowerCase() === "azul") {
+    document.body.style.background = "blue";
+
+    setTimeout(() => {
+      document.body.style.background = ""; // Regresa al color original
+    }, 5000);
+  }
+});
   </script>
 </body>
 </html>
+
 
 
