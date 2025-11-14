@@ -1,13 +1,21 @@
+
 <!doctype html>
 <html>
-<body>
-  <button style="background-color: blue;" id="btn">ENVIAR MENSAJE</button>
+<head>
+  <meta charset="utf-8">
+  <title>Sender</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+  <h2>Enviar texto</h2>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  <input id="mensaje" type="text" placeholder="Escribe algo" style="width: 200px; padding: 6px;">
+  <button onclick="enviar()">Enviar</button>
 
-    const firebaseConfig = {
+  <script>
+    // TU CONFIG
+     const firebaseConfig = {
       apiKey: "AIzaSyC-gy5r8gCPL1mJk6JlXfLmwAW_gtoaYkw",
       authDomain: "rondapreguntas.firebaseapp.com",
       databaseURL: "https://rondapreguntas-default-rtdb.firebaseio.com",
@@ -17,21 +25,19 @@
       appId: "1:96196940602:web:d0699eafd781c721f47603",
       measurementId: "G-1695HYEX62"
     };
+    firebase.initializeApp(firebaseConfig);
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+    const db = firebase.database();
 
-    document.getElementById("btn").addEventListener("click", () => {
-      console.log("Botón presionado, enviando...");
-      set(ref(db, "mensaje"), {
-        texto: "¡El botón fue presionado!"
-      })
-      .then(() => console.log("Mensaje enviado"))
-      .catch(err => console.error("Error:", err));
-    });
+    function enviar() {
+      const texto = document.getElementById("mensaje").value;
+      db.ref("chat/mensaje").set(texto);  // <-- SE PUBLICA
+    }
   </script>
 </body>
 </html>
+
+
 
 
 
