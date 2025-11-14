@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<body>
+  <button onclick="send()">ENVIAR MENSAJE</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC-gy5r8gCPL1mJk6JlXfLmwAW_gtoaYkw",
+      authDomain: "rondapreguntas.firebaseapp.com",
+      databaseURL: "https://rondapreguntas-default-rtdb.firebaseio.com",
+      projectId: "rondapreguntas",
+      storageBucket: "rondapreguntas.firebasestorage.app",
+      messagingSenderId: "96196940602",
+      appId: "1:96196940602:web:d0699eafd781c721f47603",
+      measurementId: "G-1695HYEX62"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    function send() {
+      set(ref(db, "mensaje"), {
+        texto: "¡El botón fue presionado!"
+      });
+    }
+  </script>
+</body>
+</html>
