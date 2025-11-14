@@ -23,6 +23,24 @@
        alt="error" 
        style="width:180px; filter:drop-shadow(0 0 10px black);">
 </div>
+
+
+  <!-- Imagen de bien superpuesta -->
+<div id="bienOverlay" 
+     style="display:none;
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background: rgba(0,0,0,0.5);
+            z-index:9999;
+            display:flex;
+            justify-content:center;
+            align-items:center;">
+  <img src="https://marketplace.canva.com/yaTUs/MAE86YyaTUs/1/tl/canva-circle-with-checkmark-icon-MAE86YyaTUs.png" 
+       alt="error" 
+       style="width:180px; filter:drop-shadow(0 0 10px black);">
+</div>
+
   
   <h2>Texto recibido:</h2>
   
@@ -97,10 +115,22 @@ if (msg && msg.toLowerCase() === "error") {
     overlay.style.display = "none";
   }, 2000);
 }
+
+
+       // Mostrar palomita de correcto 2 segundos
+if (msg && msg.toLowerCase() === "bien") {
+  const overlay = document.getElementById("bienOverlay");
+  overlay.style.display = "flex";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 2000);
+}
 });
   </script>
 </body>
 </html>
+
 
 
 
