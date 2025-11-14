@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Enviar Comando</title>
+  <title>Panel Operador</title>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
   <style>
-    :root { --bg:#0f1724; --btn:#1d4ed8; --text:#ffffff; }
+    :root { --bg:#0f1724; --text:#ffffff; }
 
     html,body{
       height:100%; margin:0;
@@ -22,11 +22,12 @@
 
     .center{
       display:flex; flex-direction:column;
+      gap:30px;
       align-items:center; justify-content:center;
       width:100%; max-width:700px; padding:24px;
     }
 
-    .big-btnError{
+    .big-btn{
       appearance:none;
       border:0;
       border-radius:28px;
@@ -35,25 +36,41 @@
       font-weight:700;
       width:86vw; max-width:220px;
       height:86vw; max-height:220px;
-      background:red; color:white;
-      box-shadow:0 12px 30px rgba(225,29,72,.22), inset 0 -6px 12px rgba(0,0,0,.12);
+      color:white;
+      box-shadow:0 12px 30px rgba(0,0,0,.22), inset 0 -6px 12px rgba(0,0,0,.12);
       display:flex; align-items:center; justify-content:center;
       touch-action:manipulation; user-select:none;
+      cursor:pointer;
     }
 
     .big-btn:active{
-      transform:scale(.98);
+      transform:scale(.96);
+    }
+
+    /* Botón rojo */
+    .btn-error{
+      background:red;
+    }
+
+    /* Botón verde */
+    .btn-bien{
+      background:green;
     }
   </style>
 </head>
 
 <body>
   <div class="center">
-    <button id="sendBtn" class="big-btnError"> Error</button>
+
+    <!-- Botón de Error -->
+    <button id="sendError" class="big-btn btn-error">Error</button>
+
+    <!-- Botón de Bien / Correcto -->
+    <button id="sendBien" class="big-btn btn-bien">Bien</button>
+
   </div>
 
   <script>
-    // Configuración Firebase (tuya)
     const firebaseConfig = {
       apiKey: "AIzaSyC-gy5r8gCPL1mJk6JlXfLmwAW_gtoaYkw",
       authDomain: "rondapreguntas.firebaseapp.com",
@@ -68,10 +85,16 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Cuando se toca el botón error → envía "error"
-    document.getElementById("sendBtn").addEventListener("click", () => {
+    // Botón Error → envía "error"
+    document.getElementById("sendError").addEventListener("click", () => {
       db.ref("chat/mensaje").set("error");
+    });
+
+    // Botón Bien → envía "bien"
+    document.getElementById("sendBien").addEventListener("click", () => {
+      db.ref("chat/mensaje").set("bien");
     });
   </script>
 </body>
 </html>
+
