@@ -1,13 +1,21 @@
 <!doctype html>
 <html>
-<body>
-  <h1 id="resultado">Esperando mensaje...</h1>
+<head>
+  <meta charset="utf-8">
+  <title>Receiver</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+  <h2>Texto recibido:</h2>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  <div id="resultado" style="font-size: 22px; padding: 10px; background: #eee;">
+    Esperando mensaje...
+  </div>
 
-    const firebaseConfig = {
+  <script>
+    // MISMO CONFIG QUE EN sender.html
+     const firebaseConfig = {
       apiKey: "AIzaSyC-gy5r8gCPL1mJk6JlXfLmwAW_gtoaYkw",
       authDomain: "rondapreguntas.firebaseapp.com",
       databaseURL: "https://rondapreguntas-default-rtdb.firebaseio.com",
@@ -17,18 +25,16 @@
       appId: "1:96196940602:web:d0699eafd781c721f47603",
       measurementId: "G-1695HYEX62"
     };
+    firebase.initializeApp(firebaseConfig);
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+    const db = firebase.database();
 
-    const mensajeRef = ref(db, "mensaje");
-
-    onValue(mensajeRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        document.getElementById("resultado").textContent = data.texto;
-      }
+    // Escucha en TIEMPO REAL
+    db.ref("chat/mensaje").on("value", (snapshot) => {
+      document.getElementById("resultado").innerText = snapshot.val();
     });
   </script>
 </body>
 </html>
+
+
