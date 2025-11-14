@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enviar Comando</title>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <style>
+    :root { --bg:#0f1724; --btn:#f97316; --text:#ffffff; }
+
+    html,body{
+      height:100%; margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:linear-gradient(180deg,#071025 0%,#0f1724 100%);
+      color:var(--text);
+      display:flex; align-items:center; justify-content:center;
+    }
+
+    .center{
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      width:100%; max-width:700px; padding:24px;
+    }
+
+    .big-btn{
+      appearance:none;
+      border:0;
+      border-radius:28px;
+      padding:22px 28px;
+      font-size:26px;
+      font-weight:700;
+      width:86vw; max-width:420px;
+      height:86vw; max-height:420px;
+      background:var(--btn); color:white;
+      box-shadow:0 12px 30px rgba(225,29,72,.22), inset 0 -6px 12px rgba(0,0,0,.12);
+      display:flex; align-items:center; justify-content:center;
+      touch-action:manipulation; user-select:none;
+    }
+
+    .big-btn:active{
+      transform:scale(.98);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center">
+    <button id="sendBtn" class="big-btn">Team Orange</button>
+  </div>
+
+  <script>
+    // Configuración Firebase (tuya)
+    const firebaseConfig = {
+      apiKey: "AIzaSyC-gy5r8gCPL1mJk6JlXfLmwAW_gtoaYkw",
+      authDomain: "rondapreguntas.firebaseapp.com",
+      databaseURL: "https://rondapreguntas-default-rtdb.firebaseio.com",
+      projectId: "rondapreguntas",
+      storageBucket: "rondapreguntas.firebasestorage.app",
+      messagingSenderId: "96196940602",
+      appId: "1:96196940602:web:d0699eafd781c721f47603",
+      measurementId: "G-1695HYEX62"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Cuando se toca el botón → envía "naranja"
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      db.ref("chat/mensaje").set("naranja");
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
