@@ -89,21 +89,25 @@
 </head>
 
 <body>
+  
   <div class="center">
 
-    <!-- Botón de Error -->
-    <button id="sendError" class="big-btn btn-error">Incorrecto</button>
+    <!-- FILA DE NÚMERO + BOTÓN ENVIAR -->
+    <div style="display:flex; gap:20px; align-items:center;">
+      <input id="numeroInput" type="number" placeholder="Número">
 
-    <!-- Botón de Bien / Correcto -->
-    <button id="sendBien" class="big-btn btn-bien">Correcto</button>
+      <button id="sendNumero">Enviar</button>
+    </div>
 
-     <!-- Campo numérico -->
-    <input id="numeroInput" type="number" placeholder="Ingresa número">
-
-    <!-- Botón para enviarlo -->
-    <button id="sendNumero">Enviar número</button>
+    <!-- FILA DE BOTONES CORRECTO / INCORRECTO -->
+    <div style="display:flex; gap:40px; margin-top:10px;">
+      <button id="sendBien" class="big-btn btn-bien">Correcto</button>
+      <button id="sendError" class="big-btn btn-error">Incorrecto</button>
+    </div>
     
   </div>
+
+  
 
   <script>
     const firebaseConfig = {
