@@ -56,6 +56,35 @@
     .btn-bien{
       background:green;
     }
+
+
+    /* Estilos del campo numérico */
+    #numeroInput{
+      width:200px;
+      padding:14px;
+      font-size:24px;
+      border-radius:12px;
+      border:none;
+      text-align:center;
+      outline:none;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+
+    #sendNumero{
+      padding:14px 30px;
+      font-size:22px;
+      border-radius:16px;
+      border:none;
+      background:#1565ff;
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 6px 20px rgba(0,0,0,.22);
+    }
+
+    #sendNumero:active{
+      transform:scale(.96);
+    }
   </style>
 </head>
 
@@ -68,6 +97,12 @@
     <!-- Botón de Bien / Correcto -->
     <button id="sendBien" class="big-btn btn-bien">Correcto</button>
 
+     <!-- Campo numérico -->
+    <input id="numeroInput" type="number" placeholder="Ingresa número">
+
+    <!-- Botón para enviarlo -->
+    <button id="sendNumero">Enviar número</button>
+    
   </div>
 
   <script>
@@ -94,6 +129,21 @@
     document.getElementById("sendBien").addEventListener("click", () => {
       db.ref("chat/mensaje").set("bien");
     });
+
+
+    // Enviar número
+    document.getElementById("sendNumero").addEventListener("click", () => {
+      const n = document.getElementById("numeroInput").value;
+
+      if(n === ""){
+        alert("Ingresa un número antes de enviar.");
+        return;
+      }
+
+      db.ref("chat/mensaje").set(n);
+    });
+
+    
   </script>
 </body>
 </html>
