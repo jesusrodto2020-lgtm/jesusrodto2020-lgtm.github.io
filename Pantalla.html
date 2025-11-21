@@ -18,13 +18,22 @@
     font-family: sans-serif;
   }
 
-  #resultado {
-    font-size: 32px;           /* Letra grande */
-    padding: 20px;
-    background: #eee;
-    border-radius: 10px;
-    text-align: center;
-  }
+  #pregunta {
+  display: flex;
+  flex-direction: column;   /* Acomoda uno abajo de otro */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;                /* Separación entre textos */
+}
+
+#respuesta {
+  font-size: 26px;
+  color: #444;
+  background: #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
 </style>
   
 
@@ -70,9 +79,10 @@
 
   
 
-  <div id="resultado">
-    Esperando mensaje...
-  </div>
+ <div id="contenedor">
+  <div id="pregunta">Esperando mensaje...</div>
+  <div id="respuesta">Segundo texto aquí...</div>
+</div>
 
   <script>
     // MISMO CONFIG QUE EN sender.html
@@ -93,10 +103,12 @@
     // Escucha en TIEMPO REAL
     db.ref("chat/mensaje").on("value", (snapshot) => {
   const msg = snapshot.val();
-  const box = document.getElementById("resultado");
-
+  const box = document.getElementById("pregunta");
+  const boxRespu = document.getElementById("respuesta");
+      
   // Mostrar el texto normalmente
-  box.innerText = msg;
+      box.innerText = "HOLAA";
+  boxRespu.innerText = msg;
 
   // Si el mensaje es "azul", cambiar fondo 5 segundos
   if (msg && msg.toLowerCase() === "azul") {
@@ -155,6 +167,7 @@ if (msg && msg.toLowerCase() === "bien") {
   </script>
 </body>
 </html>
+
 
 
 
