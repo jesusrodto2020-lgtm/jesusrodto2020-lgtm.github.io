@@ -117,9 +117,31 @@ margin-left: 200px;
   const msg = snapshot.val();
   const box = document.getElementById("pregunta");
   const boxRespu = document.getElementById("respuesta");
+
+function agregarRespuesta(texto) {
+  const nuevo = document.createElement("div");
+  nuevo.className = "extraResp";
+  nuevo.style.cssText = `
+    font-size: 24px;
+    background: #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+  `;
+  nuevo.innerText = texto;
+  boxRespu.appendChild(nuevo);
+}
+
+// FUNCIÓN PARA BORRAR TODAS LAS RESPUESTAS
+function limpiarRespuestas() {
+  boxRespu.innerHTML = "";
+}
+
+
+
       
   // Mostrar el texto normalmente
-  boxRespu.innerText = msg;
+ // boxRespu.innerText = msg;
 
   // Si el mensaje es "azul", cambiar fondo 5 segundos
   if (msg && msg.toLowerCase() === "azul") {
@@ -296,12 +318,18 @@ if (msg && msg.toLowerCase() === "p12") {
 }
 
 
-
+if (msg === "r5-1") agregarRespuesta("Aumenta compromiso");
+if (msg === "r5-2") agregarRespuesta("Mejora productividad");
+if (msg === "r5-3") agregarRespuesta("Facilita comunicación");
+if (msg === "r5-4") agregarRespuesta("Reduce rotación");
+if (msg === "r5-5") agregarRespuesta("Agiliza decisiones");
+if (msg === "r5-6") agregarRespuesta("Atrae talento");
       
 });
   </script>
 </body>
 </html>
+
 
 
 
