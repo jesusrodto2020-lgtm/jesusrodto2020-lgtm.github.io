@@ -132,6 +132,23 @@ function agregarRespuesta(texto) {
   boxRespu.appendChild(nuevo);
 }
 
+      function escribirTexto(texto, velocidad = 40) {
+    const div = document.getElementById("respuesta");
+    div.innerHTML = ""; // Limpia el contenido
+    let index = 0;
+
+    function escribir() {
+        if (index < texto.length) {
+            div.innerHTML += texto.charAt(index);
+            index++;
+            setTimeout(escribir, velocidad);
+        }
+    }
+
+    escribir();
+      }
+        
+
 // FUNCIÓN PARA BORRAR TODAS LAS RESPUESTAS
 function limpiarRespuestas() {
   boxRespu.innerHTML = "";
@@ -317,7 +334,7 @@ if (msg && msg.toLowerCase() === "p12") {
   box.innerText = "¿Qué elemento de la empresa determina comportamientos, valores y forma de trabajar?";
 }
       
-if (msg === "r1") boxRespu.innerText = "Políticas operativas";
+if (msg === "r1")  escribirTexto("Políticas operativas"); //boxRespu.innerText = "Políticas operativas";
 if (msg === "r2") boxRespu.innerText = "Reclutamiento externo";
 if (msg === "r3") boxRespu.innerText = "Capacitación de inducción";
 if (msg === "r4") boxRespu.innerText = "Estrategia de cambio emergente";
@@ -351,11 +368,13 @@ if (msg === "r10") boxRespu.innerText = "Políticas operativas";
 if (msg === "r11") boxRespu.innerText = "Capacitación por desarrollo";
 if (msg === "r12") boxRespu.innerText = "La cultura corporativa";
 
+
       
 });
   </script>
 </body>
 </html>
+
 
 
 
