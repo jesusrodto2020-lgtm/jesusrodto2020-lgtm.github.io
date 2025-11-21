@@ -8,43 +8,86 @@
 
  <style>
   body {
-    margin: 0;
+  margin: 0;
   padding: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 80px; /* SUBE todo el contenedor */
-  background: #f5f5f5;
-  font-family: sans-serif;
-  }
+  padding-top: 80px;
 
-  #pregunta {
-  display: flex;
-  flex-direction: column;   /* Acomoda uno abajo de otro */
-  justify-content: center;
-  align-items: center;
-  gap: 20px;                /* Separación entre textos */
-    font-size: 26px;
-  color: #444;
-  background: #ddd;
-  padding: 15px;
-    margin: 30px;
-    margin-left: 200px;
-  margin-right: 200px;
-  border-radius: 10px;
-  text-align: center;
+  /* 🔥 FONDO DEGRADADO ELEGANTE */
+  background: linear-gradient(135deg, #0d47a1, #1976d2, #42a5f5);
+  background-size: 200% 200%;
+  animation: moverFondo 10s ease infinite;
+
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #fff;
 }
 
-#respuesta {
-  font-size: 26px;
-  color: #444;
-  background: #ddd;
-  padding: 15px;
-  border-radius: 10px;
-margin-left: 200px;
-  margin-right: 200px;
+@keyframes moverFondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🔵 CONTENEDOR CENTRAL */
+#contenedor {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* 📘 CAJA DE PREGUNTA */
+#pregunta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+
+  padding: 25px;
+  margin: 20px 40px;
+  border-radius: 15px;
+
+  font-size: 28px;
   text-align: center;
+  color: #ffffff;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* 📗 CAJA DE RESPUESTAS */
+#respuesta {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+
+  padding: 20px;
+  margin: 10px 40px;
+  border-radius: 15px;
+
+  font-size: 26px;
+  text-align: center;
+  color: #f0f0f0;
+
+  min-height: 40px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* 🟦 RESPUESTAS EXTRA AGREGADAS */
+.extraResp {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 22px;
+  margin-top: 10px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 </style>
   
@@ -387,6 +430,7 @@ if (msg && msg.toLowerCase() === "r12") escribirTexto("La cultura corporativa");
   </script>
 </body>
 </html>
+
 
 
 
