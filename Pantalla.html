@@ -151,7 +151,8 @@ function agregarRespuesta(texto) {
 
 // FUNCIÓN PARA BORRAR TODAS LAS RESPUESTAS
 function limpiarRespuestas() {
-  boxRespu.innerHTML = "";
+  const cont = document.getElementById("respuestas");
+    cont.innerHTML = "";  // 🔥 BORRA TODOS LOS DIVS
 }
 
 
@@ -386,6 +387,7 @@ if (msg && msg.toLowerCase() === "r12") escribirTexto("La cultura corporativa");
   </script>
 </body>
 </html>
+
 
 
 
