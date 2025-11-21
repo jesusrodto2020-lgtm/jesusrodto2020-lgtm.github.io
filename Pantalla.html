@@ -333,12 +333,14 @@ if (msg && msg.toLowerCase() === "p11") {
 if (msg && msg.toLowerCase() === "p12") {
   box.innerText = "¿Qué elemento de la empresa determina comportamientos, valores y forma de trabajar?";
 }
-      
-if (msg === "r1")  escribirTexto("Políticas operativas"); //boxRespu.innerText = "Políticas operativas";
-if (msg === "r2") boxRespu.innerText = "Reclutamiento externo";
-if (msg === "r3") boxRespu.innerText = "Capacitación de inducción";
-if (msg === "r4") boxRespu.innerText = "Estrategia de cambio emergente";
 
+      
+msg = msg.toLowerCase(); // ← convierte a minúsculas para aceptar R1 o r1
+
+if (msg === "r1") escribirTexto("Políticas operativas");
+if (msg === "r2") escribirTexto("Reclutamiento externo");
+if (msg === "r3") escribirTexto("Capacitación de inducción");
+if (msg === "r4") escribirTexto("Estrategia de cambio emergente");
       
 
 if (msg === "r5-1") agregarRespuesta("Aumenta compromiso");
@@ -363,17 +365,17 @@ if (msg === "r8-2") agregarRespuesta("Requiere tiempo que interrumpe operaciones
 if (msg === "r8-3") agregarRespuesta("Si no se evalúa, puede no servir");
 if (msg === "r8-4") agregarRespuesta("Puede generar resistencia si no se comunica bien");
 
-if (msg === "r9") boxRespu.innerText = "Cambio incremental";
-if (msg === "r10") boxRespu.innerText = "Políticas operativas";
-if (msg === "r11") boxRespu.innerText = "Capacitación por desarrollo";
-if (msg === "r12") boxRespu.innerText = "La cultura corporativa";
-
-
+      
+if (msg === "r9")  escribirTexto("Cambio incremental");
+if (msg === "r10") escribirTexto("Políticas operativas");
+if (msg === "r11") escribirTexto("Capacitación por desarrollo");
+if (msg === "r12") escribirTexto("La cultura corporativa");
       
 });
   </script>
 </body>
 </html>
+
 
 
 
