@@ -155,6 +155,9 @@ background: linear-gradient(135deg, #00040a 0%, #00203a 40%, #004a7a 100%);
 
     const db = firebase.database();
 
+
+    let bloqueado = false; 
+    
     // Escucha en TIEMPO REAL
     db.ref("chat/mensaje").on("value", (snapshot) => {
   const msg = snapshot.val();
@@ -206,33 +209,50 @@ function limpiarRespuestas() {
 
   // Si el mensaje es "azul", cambiar fondo 5 segundos
   if (msg && msg.toLowerCase() === "azul") {
+    if(!bloqueado){
+        bloqueado = true; 
     document.body.style.background = "blue";
 
     setTimeout(() => {
       document.body.style.background = ""; // Regresa al color original
+    bloqueado = false;
     }, 5000);
+    }
   }
       if (msg && msg.toLowerCase() === "rojo") {
+         if(!bloqueado){
+             bloqueado = true;
     document.body.style.background = "red";
 
     setTimeout(() => {
       document.body.style.background = ""; // Regresa al color original
+   bloqueado = false;
     }, 5000);
+         }
   }
       if (msg && msg.toLowerCase() === "verde") {
+         if(!bloqueado){
+             bloqueado = true;
     document.body.style.background = "green";
 
     setTimeout(() => {
       document.body.style.background = ""; // Regresa al color original
+    bloqueado = false;
     }, 5000);
+         }
   }
 
        if (msg && msg.toLowerCase() === "naranja") {
+          if(!bloqueado){
+              bloqueado = true; 
     document.body.style.background = "orange";
 
     setTimeout(() => {
-      document.body.style.background = ""; // Regresa al color original
+      document.body.style.background = "";  // Regresa al color original
+            bloqueado = false; 
+
     }, 5000);
+          }
   }
 
 
@@ -430,6 +450,7 @@ if (msg && msg.toLowerCase() === "r12") escribirTexto("La cultura corporativa");
   </script>
 </body>
 </html>
+
 
 
 
