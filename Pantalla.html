@@ -347,12 +347,11 @@ if (msg && msg.toLowerCase() === "p12") {
 }
 
       
-msg = msg.toLowerCase(); // ← convierte a minúsculas para aceptar R1 o r1
 
-if (msg === "r1") escribirTexto("Políticas operativas");
-if (msg === "r2") escribirTexto("Reclutamiento externo");
-if (msg === "r3") escribirTexto("Capacitación de inducción");
-if (msg === "r4") escribirTexto("Estrategia de cambio emergente");
+if (msg && msg.toLowerCase() === "r1") escribirTexto("Políticas operativas");
+if (msg && msg.toLowerCase() === "r2") escribirTexto("Reclutamiento externo");
+if (msg && msg.toLowerCase() === "r3") escribirTexto("Capacitación de inducción");
+if (msg && msg.toLowerCase() === "r4") escribirTexto("Estrategia de cambio emergente");
       
 
 if (msg === "r5-1") agregarRespuesta("Aumenta compromiso");
@@ -378,15 +377,16 @@ if (msg === "r8-3") agregarRespuesta("Si no se evalúa, puede no servir");
 if (msg === "r8-4") agregarRespuesta("Puede generar resistencia si no se comunica bien");
 
       
-if (msg === "r9")  escribirTexto("Cambio incremental");
-if (msg === "r10") escribirTexto("Políticas operativas");
-if (msg === "r11") escribirTexto("Capacitación por desarrollo");
-if (msg === "r12") escribirTexto("La cultura corporativa");
+if (msg && msg.toLowerCase() === "r9")  escribirTexto("Cambio incremental");
+if (msg && msg.toLowerCase()  === "r10") escribirTexto("Políticas operativas");
+if (msg && msg.toLowerCase()  === "r11") escribirTexto("Capacitación por desarrollo");
+if (msg && msg.toLowerCase() === "r12") escribirTexto("La cultura corporativa");
       
 });
   </script>
 </body>
 </html>
+
 
 
 
